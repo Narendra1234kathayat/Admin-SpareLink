@@ -46,7 +46,7 @@ const Login = () => {
         e.preventDefault();
 
         if (!validateForm()) {
-            toast.error("Please fix the form errors before submitting", { autoClose: 2500 });
+            toast.error("Error in the credential", { autoClose: 2500 });
             return;
         }
 
@@ -54,7 +54,7 @@ const Login = () => {
         
         try {
             const response = await axiosInstance.post('/api/users/login', { email, password });
-            const roleName = response.data.data.roleId.roleName;
+            const roleName = response?.data?.data?.roleId?.roleName;
 
             if (roleName !== 'admin') {
                 toast.error("You don't have admin access", { autoClose: 4000 });
@@ -102,7 +102,7 @@ const Login = () => {
                     </motion.div>
 
                     <motion.form onSubmit={handleSubmit}>
-                        {/* Email */}
+                       
                         <div className="form-group">
                             <label htmlFor="email" className="form-label">Email Address</label>
                             <motion.input
@@ -117,7 +117,7 @@ const Login = () => {
                             {errors.email && <p className="error-text">{errors.email}</p>}
                         </div>
 
-                        {/* Password */}
+                        
                         <div className="form-group">
                             <label htmlFor="password" className="form-label">Password</label>
                             <motion.input
@@ -132,7 +132,7 @@ const Login = () => {
                             {errors.password && <p className="error-text">{errors.password}</p>}
                         </div>
 
-                        {/* Submit Button */}
+                      
                         <motion.button
                             type="submit"
                             className="login-button"

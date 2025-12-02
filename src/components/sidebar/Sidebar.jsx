@@ -9,10 +9,15 @@ import {
   FaChevronDown,
   FaChevronRight,
   FaSignOutAlt,
+  FaAddressCard,
+  FaAtlas,
+  FaCreditCard,
+  FaProductHunt,
 } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSidebar } from "../../Store/Slice/SidebarSlice.js";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaFaceAngry, FaFaceFrown, FaFaceGrinHearts } from "react-icons/fa6";
 
 const Sidebar = () => {
   const [isManageOpen, setIsManageOpen] = useState(false);
@@ -147,7 +152,7 @@ const Sidebar = () => {
                     to="/admin/spareparts"
                     className="nav-link text-white d-flex align-items-center gap-2"
                   >
-                    <FaClipboardList />
+                    <FaProductHunt />
                     Spare Parts
                   </Link>
                 </motion.div>
@@ -165,7 +170,7 @@ const Sidebar = () => {
                     style={{ borderRadius: "5px" }}
                   >
                     <span className="d-flex align-items-center gap-2">
-                      <FaClipboardList />
+                      <FaClipboardList/>
                       Product Management
                     </span>
                     <motion.div
@@ -209,14 +214,14 @@ const Sidebar = () => {
                   
                   {
                     to: "/admin/quotation",
-                    icon: FaClipboardList,
+                    icon: FaUser,
                     text: "Supplier Management",
                   },
-                  {
-                    to: "/admin/analytics",
-                    icon: FaClipboardList,
-                    text: "Analytics Stats",
-                  },
+                  // {
+                  //   to: "/admin/analytics",
+                  //   icon: FaClipboardList,
+                  //   text: "Analytics Stats",
+                  // },
                 ].map((item) => (
                   <motion.div
                     key={item.to}
