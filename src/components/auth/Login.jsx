@@ -55,7 +55,7 @@ const Login = () => {
         try {
             const response = await axiosInstance.post('/api/users/login', { email, password });
             const roleName = response?.data?.data?.roleId?.roleName;
-
+            console.log('User role:', response);
             if (roleName !== 'admin') {
                 toast.error("You don't have admin access", { autoClose: 4000 });
                 setIsLoading(false);
@@ -72,8 +72,10 @@ const Login = () => {
                 }, 1500);
             }
         } catch (error) {
+            console.log("Error status:", error.response?.status);
+
             console.error('Login error:', error);
-            toast.error(error.response?.data?.message || 'Login failed. Please try again.', { autoClose: 4000 });
+            toast.error(error.message || 'Login failed. Please check your credentials..', { autoClose: 4000 });
         } finally {
             setIsLoading(false);
         }
@@ -133,7 +135,7 @@ const Login = () => {
                         </div>
 
                       
-                        <motion.button
+                        <button
                             type="submit"
                             className="login-button"
                             disabled={isLoading}
@@ -146,7 +148,7 @@ const Login = () => {
                             ) : (
                                 'Sign In'
                             )}
-                        </motion.button>
+                        </button>
                     </motion.form>
 
                     <div className="login-footer">
